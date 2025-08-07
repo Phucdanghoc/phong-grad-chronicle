@@ -61,7 +61,20 @@ export default {
 					'accent-foreground': 'hsl(var(--sidebar-accent-foreground))',
 					border: 'hsl(var(--sidebar-border))',
 					ring: 'hsl(var(--sidebar-ring))'
+				},
+				// Graduation theme colors
+				grad: {
+					primary: 'hsl(var(--grad-primary))',
+					light: 'hsl(var(--grad-light))',
+					dark: 'hsl(var(--grad-dark))',
+					accent: 'hsl(var(--grad-accent))',
+					secondary: 'hsl(var(--grad-secondary))'
 				}
+			},
+			backgroundImage: {
+				'gradient-hero': 'var(--gradient-hero)',
+				'gradient-section': 'var(--gradient-section)',
+				'gradient-card': 'var(--gradient-card)'
 			},
 			borderRadius: {
 				lg: 'var(--radius)',
