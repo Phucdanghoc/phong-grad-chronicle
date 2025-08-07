@@ -1,6 +1,7 @@
 'use client'
 import { GraduationCap, Award, Calendar, MapPin, Users, Star, ChevronDown, Clock, Heart, BookOpen, Trophy, Sparkles, ArrowUp, Home, Info, CalendarDays, MessageCircle } from 'lucide-react'
 import { useState, useEffect } from 'react'
+import FloatingRSVP from './FloatingRSVP'
 import avatarPhong from '@/assets/avatar-phong.jpg'
 import memoryStudy1 from '@/assets/memory-study-1.jpg'
 import memoryStudy2 from '@/assets/memory-study-2.jpg'
@@ -121,6 +122,7 @@ export default function GraduationLanding() {
       `}</style>
 
       <SectionNavigation />
+      <FloatingRSVP />
 
       {/* SECTION 1: Introduction */}
       <section className="section min-h-screen relative flex items-center justify-center overflow-hidden">
