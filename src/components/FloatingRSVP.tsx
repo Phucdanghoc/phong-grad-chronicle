@@ -17,7 +17,7 @@ export default function FloatingRSVP({ isVisible = true }: FloatingRSVPProps) {
   const [name, setName] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const [webhookUrl, setWebhookUrl] = useState(
-    localStorage.getItem('n8n-webhook-url') || ''
+    localStorage.getItem('n8n-webhook-url') || 'https://n8n.hololab.asia/webhook-test/19694915-37c4-4169-97d5-9e46b92bc5c8'
   );
   const [attendees, setAttendees] = useState<RSVPData[]>([]);
   const { toast } = useToast();
@@ -28,8 +28,10 @@ export default function FloatingRSVP({ isVisible = true }: FloatingRSVPProps) {
       const getUrl = localStorage.getItem('n8n-get-webhook-url');
       if (getUrl) {
         try {
-          const response = await fetch(getUrl);
+          const response = await fetch("https://n8n.hololab.asia/webhook/19694915-37c4-4169-97d5-9e46b92bc5c8");
           if (response.ok) {
+            console.log(response.body);
+            
             const data = await response.json();
             // Assuming n8n returns array of attendees
             if (Array.isArray(data)) {
@@ -42,7 +44,7 @@ export default function FloatingRSVP({ isVisible = true }: FloatingRSVPProps) {
       }
     };
 
-    fetchAttendees();
+    // fetchAttendees();
   }, []);
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -70,7 +72,7 @@ export default function FloatingRSVP({ isVisible = true }: FloatingRSVPProps) {
     setIsLoading(true);
 
     try {
-      const response = await fetch(webhookUrl, {
+      const response = await fetch("https://n8n.hololab.asia/webhook/19694915-37c4-4169-97d5-9e46b92bc5c8", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -163,13 +165,13 @@ export default function FloatingRSVP({ isVisible = true }: FloatingRSVPProps) {
         </button>
 
         {/* Config button */}
-        <button
+        {/* <button
           onClick={() => setIsConfigOpen(true)}
           className="mt-4 w-12 h-12 bg-yellow-300 hover:bg-yellow-400 rounded-full flex items-center justify-center transition-all duration-300"
           title="Cấu hình n8n"
         >
           <Settings className="w-5 h-5 text-yellow-900" />
-        </button>
+        </button> */}
       </div>
 
       {/* RSVP Modal */}
@@ -235,56 +237,6 @@ export default function FloatingRSVP({ isVisible = true }: FloatingRSVPProps) {
         </div>
       )}
 
-      {/* Config Modal */}
-      {isConfigOpen && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center p-4">
-          <div className="bg-white rounded-3xl p-8 shadow-2xl border-4 border-yellow-400 max-w-lg w-full">
-            <div className="flex justify-between items-center mb-6">
-              <h3 className="text-2xl font-bold text-yellow-900">Cấu hình n8n</h3>
-              <button
-                onClick={() => setIsConfigOpen(false)}
-                className="w-8 h-8 rounded-full hover:bg-gray-200 flex items-center justify-center"
-              >
-                <X className="w-5 h-5 text-gray-600" />
-              </button>
-            </div>
-
-            <div className="space-y-4">
-              <div>
-                <label className="block text-sm font-medium text-yellow-900 mb-2">
-                  n8n Webhook URL (POST)
-                </label>
-                <input
-                  type="url"
-                  value={webhookUrl}
-                  onChange={(e) => setWebhookUrl(e.target.value)}
-                  placeholder="https://your-n8n-instance.com/webhook/..."
-                  className="w-full px-4 py-3 border-2 border-yellow-300 rounded-xl focus:border-yellow-400 focus:ring-0 outline-none"
-                />
-              </div>
-
-              <div className="bg-yellow-50 rounded-xl p-4 border-2 border-yellow-200">
-                <h4 className="font-semibold text-yellow-900 mb-2">Hướng dẫn thiết lập n8n:</h4>
-                <ol className="text-sm text-yellow-800 space-y-1 list-decimal list-inside">
-                  <li>Tạo workflow mới trong n8n</li>
-                  <li>Thêm Webhook node làm trigger</li>
-                  <li>Chọn method POST</li>
-                  <li>Copy webhook URL và paste vào ô trên</li>
-                  <li>Thêm Google Sheets node để lưu dữ liệu</li>
-                  <li>Activate workflow</li>
-                </ol>
-              </div>
-
-              <button
-                onClick={handleConfigSave}
-                className="w-full bg-yellow-400 hover:bg-yellow-500 text-yellow-900 font-semibold py-3 rounded-xl transition-all duration-300"
-              >
-                Lưu cấu hình
-              </button>
-            </div>
-          </div>
-        </div>
-      )}
 
       {/* Custom scrolling animation styles */}
       <style>{`

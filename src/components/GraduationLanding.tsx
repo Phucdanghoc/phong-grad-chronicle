@@ -58,7 +58,7 @@ export default function GraduationLanding() {
     <div className="fixed right-8 top-1/2 transform -translate-y-1/2 z-50 flex flex-col space-y-4">
       {[
         { icon: Home, label: 'Trang chủ' },
-        { icon: Info, label: 'Hành trình' },
+        // { icon: Info, label: 'Hành trình' },
         { icon: CalendarDays, label: 'Lời mời' },
         { icon: MessageCircle, label: 'Cảm ơn' }
       ].map((item, index) => (
@@ -159,7 +159,7 @@ export default function GraduationLanding() {
           </div>
 
           {/* Animated title with gradient text */}
-          <h1 className="text-8xl md:text-9xl font-extrabold mb-8 tracking-wider bg-gradient-to-r from-grad-primary via-grad-accent to-grad-secondary bg-clip-text text-transparent animate-gradient bg-300% animate-pulse">
+          <h1 className="text-6xl md:text-9xl font-extrabold mb-8 tracking-wider bg-gradient-to-r from-grad-primary via-grad-accent to-grad-secondary bg-clip-text text-transparent animate-gradient bg-300% animate-pulse">
             LÊ THANH PHONG
           </h1>
 
@@ -210,72 +210,6 @@ export default function GraduationLanding() {
             <div className="w-48 h-1 bg-gradient-to-r from-grad-primary to-grad-accent mx-auto rounded-full animate-pulse"></div>
           </div>
 
-          {/* Study Journey Timeline with Memory Images */}
-          <div className="relative mb-16">
-            <div className="absolute left-1/2 top-0 bottom-0 w-1 bg-gradient-to-b from-grad-primary via-grad-accent to-grad-secondary rounded-full transform -translate-x-1/2 animate-pulse"></div>
-            
-            {[
-              { 
-                year: "2021", 
-                title: "Khởi Đầu Hành Trình", 
-                desc: "Bắt đầu chương trình Cử Nhân tại Trường Đại học Công nghiệp Hà Nội với niềm đam mê học tập",
-                icon: GraduationCap,
-                position: "left",
-                image: memoryStudy1
-              },
-              { 
-                year: "2022", 
-                title: "Phát Triển Kỹ Năng", 
-                desc: "Tham gia tích cực các hoạt động nghiên cứu khoa học và dự án thực tế",
-                icon: Award,
-                position: "right",
-                image: memoryStudy2
-              },
-              { 
-                year: "2023", 
-                title: "Thành Tựu Đặc Biệt", 
-                desc: "Hack thành công hệ thống web trường - Thể hiện kỹ năng công nghệ xuất sắc",
-                icon: Trophy,
-                position: "left",
-                image: memoryStudy3
-              },
-              { 
-                year: "2024", 
-                title: "Hoàn Thành Xuất Sắc", 
-                desc: "Tốt nghiệp với bằng Cử Nhân ưu tú, sẵn sàng cho những thử thách mới",
-                icon: Star,
-                position: "right",
-                image: avatarPhong
-              }
-            ].map((item, index) => (
-              <div 
-                key={index} 
-                className={`relative flex items-center mb-12 ${item.position === 'right' ? 'flex-row-reverse' : ''} animate-fade-in-up`}
-                style={{ animationDelay: `${index * 0.3}s` }}
-              >
-                <div className={`w-1/2 ${item.position === 'right' ? 'pl-12' : 'pr-12'}`}>
-                  <div className="bg-white/10 backdrop-blur-sm p-8 rounded-2xl shadow-2xl hover:scale-105 transition-all duration-500 border border-grad-primary/30">
-                    <div className="flex items-center mb-4">
-                      <item.icon className="w-8 h-8 text-grad-primary mr-4 animate-pulse" />
-                      <span className="text-3xl font-bold text-grad-light">{item.year}</span>
-                    </div>
-                    <h4 className="text-2xl font-semibold text-white mb-3">{item.title}</h4>
-                    <p className="text-yellow-200 leading-relaxed mb-4">{item.desc}</p>
-                    {/* Memory Image */}
-                    <div className="rounded-lg overflow-hidden shadow-lg">
-                      <img 
-                        src={item.image} 
-                        alt={`Kỷ niệm ${item.year}`}
-                        className="w-full h-32 object-cover hover:scale-110 transition-transform duration-500"
-                      />
-                    </div>
-                  </div>
-                </div>
-                
-                <div className="absolute left-1/2 w-6 h-6 bg-gradient-to-br from-grad-primary to-grad-accent rounded-full border-4 border-white shadow-xl animate-pulse transform -translate-x-1/2"></div>
-              </div>
-            ))}
-          </div>
 
           {/* Achievements */}
           <div className="grid md:grid-cols-3 gap-8 mt-16">
@@ -389,9 +323,9 @@ export default function GraduationLanding() {
               </div>
             </div>
 
-            <h4 className="text-4xl font-bold text-white mb-8">Tri Ân Sâu Sắc</h4>
+            <h4 className="text-3xl font-bold text-white mb-8">Tri Ân Sâu Sắc</h4>
             
-            <div className="space-y-8 text-lg text-yellow-100 leading-relaxed">
+            <div className="space-y-9 text-lg text-yellow-100 leading-relaxed">
               <p className="animate-fade-in-up delay-300">
                 Trước tiên, xin gửi lời biết ơn sâu sắc nhất đến <span className="text-grad-light font-semibold">Gia Đình</span> - 
                 những người đã luôn bên cạnh, động viên và tạo điều kiện tốt nhất cho con đường học tập của con.
